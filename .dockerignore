@@ -1,0 +1,42 @@
+# Dependencias de Node
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Directorios de construcción y compilación de TypeScript
+dist
+build
+*.tsbuildinfo
+
+# Archivos de entorno y configuración
+.env
+.env.*
+*.env.local
+
+# Sistema de control de versiones
+.git
+.gitignore
+
+# Archivos y directorios de editor
+.idea
+.vscode
+*.swp
+*.swo
+*.sublime-workspace
+
+# Archivos específicos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de prueba
+__tests__
+coverage
+
+# Archivos de documentación
+README.md
+LICENSE
+*.md
+
+# Archivos de configuración de Docker
+Dockerfile
+.dockerignore
