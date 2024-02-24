@@ -1,13 +1,14 @@
 import mongoose from 'mongoose';
+import logger from '../utils/winston';
 
 const uri = process.env.MONGODB_URI as string;
 
 const connect = async (): Promise<void> => {
     try {
         await mongoose.connect(uri, {});
-        console.log('Conectado a MongoDB');
+        logger.info('Connected to MongoDB');
     } catch (error) {
-        console.error("Se capturó un error desconocido:", error);
+        logger.error('Error connecting to MongoDB:', error);
 
     }
 };
@@ -15,9 +16,9 @@ const connect = async (): Promise<void> => {
 const disconnect = async (): Promise<void> => {
     try {
         await mongoose.disconnect();
-        console.log('Desconectado de MongoDB');
+        logger.warn('Disconnected from MongoDB');
     } catch (error) {
-        console.error('Error desconectando de MongoDB:', error);
+        logger.error('Error disconnecting from MongoDB:', error);
     }
 };
 

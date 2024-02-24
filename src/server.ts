@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import app from "./index";
-import { connect, checkConnectionStatus, disconnect } from "./config/mongoDB";
+import { connect, checkConnectionStatus } from "./config/mongoDB";
+import logger from "./utils/winston";
 
 dotenv.config();
 
@@ -15,6 +16,6 @@ const PORT = process.env.PORT || 8080
 //Listing to the app and running it on PORT 5000
 app.listen(PORT, async () => {
   await connect();
-  console.log(`listning on port ${PORT}`);
-  console.log(checkConnectionStatus());
+  logger.info(`Server is running on PORT ${PORT}`);
+  logger.info(`MongoDB connection status: ${checkConnectionStatus()}`);
 })
