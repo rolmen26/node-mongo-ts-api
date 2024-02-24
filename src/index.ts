@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(helmet());
 
 app.get("/", (req: Request, res: Response) => {
-  res.send("Express + TypeScript Server");
+  res.send({ message: "Hello World!"});
 });
 
 export default app;
