@@ -1,12 +1,11 @@
-import { UserInterface } from "../interfaces/user.interface";
+import { UserInterface } from "../interfaces/UserInterface";
 import { Model, Schema, model } from "mongoose";
-import { v4 as uuidv4 } from 'uuid';
 
-const UserSchema = new Schema({
+
+const UsersSchema = new Schema({
     uuid:
     {
         type: Schema.Types.String,
-        default: uuidv4(),
         required: true,
         unique: true
     },
@@ -40,6 +39,6 @@ const UserSchema = new Schema({
     versionKey: false
 });
 
-const Users: Model<UserInterface> = model<UserInterface>("User", UserSchema);
+const UserSchema: Model<UserInterface> = model<UserInterface>("User", UsersSchema);
 
-export default Users;
+export default UserSchema;

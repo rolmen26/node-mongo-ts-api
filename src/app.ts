@@ -1,12 +1,12 @@
 import express, { Express, Request, Response } from "express";
-import dotenv from "dotenv";
+import { config } from "dotenv";
 import compression from "compression";
 import morgan from "morgan";
 import helmet from "helmet";
 import cors from "cors";
-import routes from "./routes/routes";
+import routes from "./api/routes/routes";
 
-dotenv.config();
+config();
 
 const app: Express = express();
 

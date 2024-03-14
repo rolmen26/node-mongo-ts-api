@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import logger from '../utils/winston';
+import logger from '../../lib/utils/logger';
 
 const uri = process.env.MONGODB_URI as string;
 
@@ -22,19 +22,7 @@ const disconnect = async (): Promise<void> => {
     }
 };
 
-const checkConnectionStatus = (): string => {
-    switch (mongoose.connection.readyState) {
-        case 0:
-            return 'Disconnected';
-        case 1:
-            return 'Connected';
-        case 2:
-            return 'Connecting';
-        case 3:
-            return 'Disconnecting';
-        default:
-            return 'Unkown';
-    }
-};
 
-export { connect, disconnect, checkConnectionStatus };
+const Connection: mongoose.Connection = mongoose.connection;
+
+export { connect, disconnect, Connection };

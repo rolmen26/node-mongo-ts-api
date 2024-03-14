@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     ports:
-      - "${PORT-8080}:8080"
+      - "${PORT-3000}:3000"
     depends_on:
       - mongodb
     networks:
@@ -15,8 +15,6 @@ services:
       - NODE_ENV=development
     env_file:
       - .env
-    command: 
-      sh -c "npm install && npm run dev"
     volumes:
       - ./:/app
     

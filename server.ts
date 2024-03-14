@@ -1,9 +1,11 @@
-import dotenv from "dotenv";
-import app from "./index";
-import { connect, checkConnectionStatus } from "./config/mongoDB";
-import logger from "./utils/winston";
+import { config } from "dotenv";
+import app from "./src/app";
+import { connect } from "./config/mongodb";
+import logger from "./lib/utils/logger";
+import http from "http";
 
-dotenv.config();
+// Load environment variables
+config();
 
 /*
   ===============================================================
@@ -13,9 +15,7 @@ running on the local macchine we are asking the app to use 3000 as the port numb
 */
 const PORT = process.env.PORT || 8080
 
-//Listing to the app and running it on PORT 5000
 app.listen(PORT, async () => {
+  logger.info(`Server is running on port ${PORT}`);
   await connect();
-  logger.info(`Server is running on PORT ${PORT}`);
-  logger.info(`MongoDB connection status: ${checkConnectionStatus()}`);
-})
+});
